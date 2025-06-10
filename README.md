@@ -1,18 +1,45 @@
-# Pat2-subtask1
+#include <iostream>
+#include <map>
+#include <string>
+#include <cctype>
 
-BRIEF OVERVIEW OF WHAT MORSE CODE IS:
-Morse code is a method of encoding text characters using sequences of dots (.) and dashes (-). It was originally developed for telegraphy and is used in radio communication.
+using namespace std;
 
-THE HISTORICAL CONTEXT OF WHY MORSE CODE WAS CREATED:
-Morse code was developed in the 1830s by Samuel Morse and Alfred Vail. It was used to send messages over long distances before telephones existed. It became especially important during wars and in aviation.
+int main() {
+    // Define Morse code mappings
+    map<char, string> morseCode = {
+        {'A', ".-"},   {'B', "-..."}, {'C', "-.-."}, {'D', "-.."},
+        {'E', "."},    {'F', "..-."}, {'G', "--."},  {'H', "...."},
+        {'I', ".."},   {'J', ".---"}, {'K', "-.-"},  {'L', ".-.."},
+        {'M', "--"},   {'N', "-."},   {'O', "---"},  {'P', ".--."},
+        {'Q', "--.-"}, {'R', ".-."},  {'S', "..."},  {'T', "-"},
+        {'U', "..-"},  {'V', "...-"}, {'W', ".--"},  {'X', "-..-"},
+        {'Y', "-.--"}, {'Z', "--.."},
+        {'0', "-----"},{'1', ".----"},{'2', "..---"},{'3', "...--"},
+        {'4', "....-"},{'5', "....."},{'6', "-...."},{'7', "--..."},
+        {'8', "---.."},{'9', "----."}
+    };
 
-AN EXPLANATION OF HOW THE MORSE CODE SYSTEM WORKS:
-Each letter or number is represented by a unique sequence of dots and dashes. For example:
-- A = .-
-- B = -...
-- 1 = .----
-- 2 = ..---
+    string input;
 
-A short signal represents a dot, and a longer signal represents a dash. The system allows communication without needing spoken words.
+    cout << "Enter your message (letters and numbers only): ";
+    getline(cin, input);
 
-me
+    cout << "Morse Code: ";
+
+    for (char c : input) {
+        if (c == ' ') {
+            cout << " / "; // Slash to separate words
+        } else {
+            c = toupper(c); // Convert to uppercase
+            if (morseCode.count(c)) {
+                cout << morseCode[c] << " ";
+            } else {
+                cout << "? "; // Unknown character
+            }
+        }
+    }
+
+    cout << endl;
+    return 0;
+}
