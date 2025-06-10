@@ -14,3 +14,5 @@ Each letter or number is represented by a unique sequence of dots and dashes. Fo
 - 2 = ..---
 
 A short signal represents a dot, and a longer signal represents a dash. The system allows communication without needing spoken words.
+
+me
